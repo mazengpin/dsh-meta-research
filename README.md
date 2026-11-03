@@ -14,7 +14,19 @@ It reads four live sources, computes a four-check drift census with a numerator 
 - Profile manifest — the nearest package.json above the workspace's parent, on disk.
 - Embedder residency — OPTIONAL, empty by default. An unconfigured meter is reported as NOT MEASURED with that reason, never as zero drift.
 
-## Install (no manual steps)
+## Install (consumer)
+
+A consumer installs the PUBLISHED PRE-RELEASE only:
+
+    pnpm add dsh-meta-research@next
+
+Then add it to the profile bundle list and restart the harness. A `dsh.profile.bundles` change hot-reloads; anything else needs a restart.
+
+The published tarball is a snapshot of a moving surface: read `ROADMAP.md` before depending on a shape.
+
+## Develop it (maintainer steps, NOT a consumer install)
+
+The clone/relative-`link:` path below is how this package is DEVELOPED and tested against a live harness. It is not an install instruction for a consumer, and a source tree is never the thing a consumer consumes.
 
 1. Clone into the machine's `plugins-src/` and build it:
 
@@ -23,7 +35,7 @@ It reads four live sources, computes a four-check drift census with a numerator 
     pnpm install
     pnpm run build
 
-2. Link it into a profile through a **relative** `link:` dependency (absolute paths are forbidden) and add it to the profile's bundle list:
+2. Link THAT CLONE into a profile through a **relative** `link:` dependency (absolute paths are forbidden) and add it to the profile's bundle list:
 
     {
       "dependencies": { "dsh-meta-research": "link:../../plugins-src/dsh-meta-research" },
@@ -32,7 +44,7 @@ It reads four live sources, computes a four-check drift census with a numerator 
 
 3. Restart the harness. A `dsh.profile.bundles` change hot-reloads; anything else needs a restart.
 
-Nothing else is required. The program workspace is DISCOVERED at load time (`DSH_META_RESEARCH_WORKSPACE`, then the nearest ancestor carrying `AGENTS.md` + `plan/` + `research/`, then a program workspace under `profiles-tree/<tier>/<name>`, then the working directory). The census origin is taken from the `Host` header of the request that runs it, so the plugin works on any port. A wrong discovery is REPORTED by the checks, not hidden.
+On either path the program workspace is DISCOVERED at load time (`DSH_META_RESEARCH_WORKSPACE`, then the nearest ancestor carrying `AGENTS.md` + `plan/` + `research/`, then a program workspace under `profiles-tree/<tier>/<name>`, then the working directory). The census origin is taken from the `Host` header of the request that runs it, so the plugin works on any port. A wrong discovery is REPORTED by the checks, not hidden.
 
 ## Routes
 

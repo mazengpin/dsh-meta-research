@@ -20,7 +20,9 @@
     "cordis.patch.yml",
     "README.md",
     "LICENSE",
-    "ROADMAP.md"
+    "ROADMAP.md",
+    "DISCLOSURE.md",
+    "CONTEXT.md"
   ],
   "engines": {
     "node": ">=22.18.0",
