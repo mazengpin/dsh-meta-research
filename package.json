@@ -22,7 +22,8 @@
     "LICENSE",
     "ROADMAP.md",
     "DISCLOSURE.md",
-    "CONTEXT.md"
+    "CONTEXT.md",
+    "verify"
   ],
   "engines": {
     "node": ">=22.18.0",
