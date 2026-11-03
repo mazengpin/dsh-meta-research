@@ -53,4 +53,3 @@ Deliberately not attempted:
 - DISCLOSURE.md - what it does today, what it does NOT do, data paths, network, security posture and the SOURCE PREVIEW state.
 - ROADMAP.md - what 1.0.0 still requires.
 - verify/host-half.ts and verify/observer-render.mjs - the assertions, which are the specification.
-
