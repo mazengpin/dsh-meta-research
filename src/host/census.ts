@@ -588,7 +588,7 @@ function buildIntentMapCheck(intentMapSlot: Slot, psSlot: Slot): IntentMapStaleC
     // who checks it learns the opposite of what the comment needs them to know.
     // The unload is an OBSERVED deployment behaviour with no decision behind it:
     // this program pins the model with `keep_alive: -1` precisely because an
-    // unpinned ollama evicts it, and `runner/laya-gpu-watchdog.ps1` logs the
+    // unpinned ollama evicts it, and the program`s own GPU watchdog logs the
     // re-pin as `the embedder is not resident (ollama unloads after idle)`.
     return staleReason(`${psSlot.reading.location} reports no resident model, so the index model cannot be compared — ollama evicts an unpinned model after an idle window (observed; no decision records it), which makes this an incomparable moment rather than drift`)
   }
