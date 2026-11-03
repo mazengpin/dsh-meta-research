@@ -13,6 +13,16 @@ It answers ONE question with evidence - where has the program drifted from its o
 
 It is a READER and a RECORDER. It repairs nothing.
 
+### Why a research round belongs in the ecosystem
+
+A plugin's claims age: a description that was true at one commit is a claim about a state the program has since left, and nothing in the tree notices the difference.
+
+A bounded round over the corpus - a start, a stop, and a stated denominator per check - turns that ageing into a measurement instead of a reader's memory of what the description said.
+
+With a provenance artifact beside it, the finding is re-runnable: a reader can re-issue the round and compare the artifact with the one that was published, instead of trusting the sentence that summarised it.
+
+That re-derivability is the whole contribution, and a round that cannot be re-run is an opinion with a timestamp.
+
 ## 2. What it does today (measured 2026-11-03)
 
 pnpm run typecheck exits 0 (tsc --noEmit), pnpm run build exits 0 (tsdown: lib/index.js ESM 59.34 kB, lib/client.js CJS 42.93 kB), and pnpm run verify exits 0.

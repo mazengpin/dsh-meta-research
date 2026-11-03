@@ -12,14 +12,16 @@ The research half: runs a research round over the program corpus and records the
 
 ## What 1.0.0 still requires
 
-1. Provenance: the artifact must record the corpus commit and the route census it read, not only the timestamp.
-2. A round with no findings must be distinguishable from a round that did not run.
-3. Bounded run time with a recorded stop reason, so a hung source is an event and not a hang.
-4. A refusal when the corpus is older than the artifact it claims to describe.
+Every row below names the command that decides it. Each of these commands exits 1 today; that is what makes a row a row and not a sentence. The field names in the checks are the acceptance shape for 1.0.0, not an existing schema.
+
+1. Provenance: the artifact records the corpus commit and the route census it read, not only the timestamp. Check: `node -e "const a=require('./research/meta-research-last.json');process.exit(a.corpus&&a.corpus.commit?0:1)"` - exits 1 today.
+2. A round with no findings is distinguishable from a round that did not run. Check: `node -e "const a=require('./research/meta-research-last.json');process.exit(a.round&&a.round.state?0:1)"` - exits 1 today; `last: null` from `GET /meta-research/api/last` is the separate "did not run" case.
+3. Bounded run time with a recorded stop reason, so a hung source is an event and not a hang. Check: `node -e "const a=require('./research/meta-research-last.json');process.exit(a.round&&a.round.stopReason?0:1)"` - exits 1 today.
+4. A refusal when the corpus is older than the artifact it claims to describe. Check: `node -e "const a=require('./research/meta-research-last.json');process.exit(a.refusal&&a.refusal.code?0:1)"` - exits 1 today.
 
 ## Limits, stated rather than implied
 
-`verify` needs Node >= 22.18 because it runs the TypeScript harness by type stripping; declared in `engines` and stated in the README, not fixed for older Node.
+`verify` needs Node >= 22.18 because it runs the TypeScript harness by type stripping; declared in `engines` and stated in the README, not fixed for older Node. Check: `node --version`.
 
 ## Compatibility seam
 
@@ -27,4 +29,8 @@ Reads the workspace (`AGENTS.md`, `plan/`, `research/`) and the profile manifest
 
 ## How this roadmap is graded
 
-An item is DONE only when a command proves it and the command is named here. An item that is only described is not done, and a roadmap whose items all read as prose is a plan, not a state.
+An item is DONE only when a command proves it and the command is named in that row. An item that is only described is not done, and a roadmap whose items all read as prose is a plan, not a state.
+
+Every row is checkable the same way: a reader runs the row's command and gets a verdict, not an opinion. The rows under "What is measured today" are green now and are re-run by `pnpm run verify` and `npm pack --dry-run`; the rows under "What 1.0.0 still requires" exit 1 today and flip to 0 only when the capability lands; the row under "Limits" is checked by `node --version`.
+
+THIS ROADMAP IS WHAT [`research.md`](research.md) TESTS: each row is a hypothesis with a command attached, and `research.md` states which rows the current round can resolve, which it cannot, and why - a row no round can resolve is named there rather than silently carried here.

@@ -23,7 +23,8 @@
     "ROADMAP.md",
     "DISCLOSURE.md",
     "CONTEXT.md",
-    "verify"
+    "verify",
+    "research.md"
   ],
   "engines": {
     "node": ">=22.18.0",
