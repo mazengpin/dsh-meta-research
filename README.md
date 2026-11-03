@@ -87,3 +87,16 @@ Environment overrides: `DSH_META_RESEARCH_WORKSPACE`, `DSH_META_RESEARCH_RECORD`
 - The census is computed per `POST /run`; this package does not schedule itself.
 
 MIT licensed. See `LICENSE`.
+
+## Roadmap at a glance
+
+A glance, not a second record: the authoritative list — with the evidence for every done row, the reason for every deferred one and the rows marked `NOT MEASURED` — is [`ROADMAP.md`](ROADMAP.md). Where this list and that file differ, that file is right and this list is the defect.
+
+- **What this package is**
+- **What is measured today**
+- **What 1.0.0 still requires**
+- **Limits, stated rather than implied**
+- **Compatibility seam**
+- **How this roadmap is graded**
+
+The roadmap currently carries **0** row(s) marked `NOT MEASURED`; a row moves to done only when its own command prints a green result.
