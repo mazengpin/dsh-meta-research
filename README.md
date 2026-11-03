@@ -14,15 +14,13 @@ It reads four live sources, computes a four-check drift census with a numerator 
 - Profile manifest — the nearest package.json above the workspace's parent, on disk.
 - Embedder residency — OPTIONAL, empty by default. An unconfigured meter is reported as NOT MEASURED with that reason, never as zero drift.
 
-## Install (consumer)
+## Adopting it inside DSH
 
-A consumer installs the PUBLISHED PRE-RELEASE only:
-
-    pnpm add dsh-meta-research@next
-
-Then add it to the profile bundle list and restart the harness. A `dsh.profile.bundles` change hot-reloads; anything else needs a restart.
-
-The published tarball is a snapshot of a moving surface: read `ROADMAP.md` before depending on a shape.
+**What it provides.** One host half under the `/meta-research` route prefix — `GET /meta-research/api/last` for this process's last run, and `POST /meta-research/api/run` to compute the four-check drift census, write one artifact and return the record — plus one client panel through the ui-slots service, showing the last run, the four checks with their denominators, the findings and the coverage counts.
+**What a deployment needs.** A running harness that serves this plugin, the upstream routes on the same origin, the program workspace discoverable on disk, and a profile carrying its own `package.json`. It reads other programs' control-plane routes and a program corpus on disk; neither read names a vendor, a model or a device.
+**How a profile enables a package.** Through the profile's bundle list: add the package name to `dsh.profile.bundles` in the profile `package.json`, and give that same file a **relative** `link:` dependency resolving to the built clone — absolute paths are forbidden. A `dsh.profile.bundles` change hot-reloads; anything else needs a restart.
+**A source preview is readable, not installable.** The tree in `plugins-src/` can be read, cloned and built, and the maintainer steps below make a live harness run it — but reading it is not adopting it, and a source tree is never the thing a consumer consumes.
+**Adoption is by the published release.** Adoption means the published pre-release, on the `next` dist-tag, resolved as an ordinary dependency of the profile; a published release is a snapshot of a moving surface, so read `ROADMAP.md` before depending on a shape, and until that release is published there is no adopting command to run.
 
 ## Develop it (maintainer steps, NOT a consumer install)
 
