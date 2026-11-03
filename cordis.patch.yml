@@ -1,0 +1,24 @@
+# dsh-meta-research — bundle patch.
+#
+# `dsh.bundle.patch` in package.json points here. A profile that lists this
+# package in `dsh.profile.bundles` merges this layer at boot.
+#
+# ONE INSERT ROW, and that is the whole patch: the clone is one host entry point
+# registering one exact route, so there is no second layer to overlay.
+#
+# FORMAT. A bundle patch file is a top-level YAML array of loader patch entries,
+# where `insert` carries the rows appended to the composition
+# (`packages/boot/app-boot/src/profile.ts:510-514`: "a top-level YAML array of
+# loader patch entries (id-targeted config overrides, disables, and `insert`
+# lists)"; `:563-566` restates it). The harness's own boot tests write this same
+# shape (`packages/boot/app-boot/tests/profile.spec.ts:285`,
+# `'- insert:\n    - id: a\n      name: pkg-a\n'`), and the working sibling
+# `dsh-lvl1-gate` ships it. Each row's `id` is the loader entry id, unique in the
+# composition; `name` is the module the loader resolves, which is this package.
+#
+# NOT YET MOUNTED ANYWHERE. No profile lists this bundle, so this row is inert
+# until a profile owner adds the clone through the registry + sync script. That
+# is deliberate: this lane owns the package shell, not a profile manifest.
+- insert:
+    - id: meta-research
+      name: 'dsh-meta-research'
