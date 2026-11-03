@@ -70,7 +70,7 @@ export const DEFAULT_ORIGIN = 'http://127.0.0.1:3083'
  * Re-pointing it at the live llama.cpp embedder would be a MISREADING rather
  * than a fix. `GET :8012/v1/models` is the only residency route llama.cpp
  * serves, and it publishes the loaded BLOB PATH
- * (`C:\\Users\\0000\\.ollama\\models\\blobs\\sha256-0650…`): `models[].name`,
+ * (`<home>\\.ollama\\models\\blobs\\sha256-0650…`): `models[].name`,
  * `models[].model`, `data[].id` and `data[].aliases[]` are all that one path
  * (measured 2026-10-26T14:43:17Z, 1,065 B, `meta.n_embd` 1024, `owned_by`
  * "llamacpp"). Comparing a blob path with the index's `qwen3-embedding:0.6b`

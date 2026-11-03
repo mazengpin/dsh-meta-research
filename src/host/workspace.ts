@@ -2,7 +2,7 @@
  * Where the records live: workspace and profile-manifest discovery.
  *
  * The plugin must run on a machine that is NOT this one. A compiled-in
- * `C:\Users\...` literal is not a default, it is a defect: on another host it
+ * `<home> literal is not a default, it is a defect: on another host it
  * makes the first run write its artifact into a directory tree that does not
  * exist (or worse, silently creates one) and makes every check read the wrong
  * files. So the workspace is DISCOVERED, in a stated order, and the order is

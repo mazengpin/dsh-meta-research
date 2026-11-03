@@ -8,7 +8,7 @@ The research half: runs a research round over the program corpus and records the
 
 ## What is measured today
 
-`pnpm run verify` green with the observer render at 45 of 45 asserts (re-measured 2026-11-03: `CHECKS: 17/17 passed`, `MUTATIONS: 5/5`, `asserts: 45/45 passed`); `npm pack --dry-run` 22 files / 74.6 kB at that same run, before `DISCLOSURE.md` and `CONTEXT.md` were added - the older figure of 21 files / 73.7 kB published in this sentence did NOT reproduce and is corrected here, and the count after both documents is 24 files / 78.0 kB; workspace discovery replaces a hard-coded `C:\Users\...` default and the origin is taken from the request `Host` header, so it is not bound to port 3083; the artifact write is atomic with a retry for `EPERM|EBUSY|EACCES|UNKNOWN` after a real Windows lock reproduced as `UNKNOWN: unknown error`.
+`pnpm run verify` green with the observer render at 45 of 45 asserts (re-measured 2026-11-03: `CHECKS: 17/17 passed`, `MUTATIONS: 5/5`, `asserts: 45/45 passed`); `npm pack --dry-run` 22 files / 74.6 kB at that same run, before `DISCLOSURE.md` and `CONTEXT.md` were added - the older figure of 21 files / 73.7 kB published in this sentence did NOT reproduce and is corrected here, and the count after both documents is 24 files / 78.0 kB; workspace discovery replaces a hard-coded `<home> default and the origin is taken from the request `Host` header, so it is not bound to port 3083; the artifact write is atomic with a retry for `EPERM|EBUSY|EACCES|UNKNOWN` after a real Windows lock reproduced as `UNKNOWN: unknown error`.
 
 ## What 1.0.0 still requires
 
