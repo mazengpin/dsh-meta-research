@@ -32,7 +32,7 @@ Deliberately not attempted:
 
 ## Alternatives rejected
 
-- Default embedder meter http://127.0.0.1:11434 (ollama /api/ps): REJECTED, and the reason IS recorded. Ollama is stopped on this host and answers 000, so check (d) reported of:null with unreadable: TypeError: ECONNREFUSED on every run, and the census could never reach 4 of 4.
+- Default embedder meter on the local inference server (its port is withheld here; the route is a server-agnostic /api/ps): REJECTED, and the reason IS recorded. That server is stopped on this host and answers 000, so check (d) reported of:null with unreadable: TypeError: ECONNREFUSED on every run, and the census could never reach 4 of 4.
 - Re-pointing that meter at llama.cpp /v1/models: REJECTED, and the reason IS recorded. That route publishes the loaded blob path, not a model name, so the comparison would manufacture drift out of a naming difference.
 - Any further alternative rejected during development: NOT RECORDED. Only the two above carry a recorded reason, and an unrecorded rejection must not be presented as one.
 
